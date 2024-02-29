@@ -225,15 +225,15 @@ function FacturaPDF({factura}) {
                             <Image src={logoFactura} style={{ width: '100%', objectFit:'contain' }} />
                         </View>
                         <View style={styles.textTopLeft}>
-                            <Text style={{ fontSize: 10, textAlign: 'center', textTransform:'uppercase' }}>{factura.infoTributaria?.razonSocial?._text}</Text>
-                            <Text style={{ fontSize: 8, textAlign: 'center', textTransform:'uppercase', color:'#00000060', marginTop: 2 }}>{factura.infoTributaria?.nombreComercial?._text}</Text>
+                            <Text style={{ fontSize: 10, textAlign: 'center', textTransform:'uppercase' }}>{factura.infoTributaria?.razonSocial}</Text>
+                            <Text style={{ fontSize: 8, textAlign: 'center', textTransform:'uppercase', color:'#00000060', marginTop: 2 }}>{factura.infoTributaria?.nombreComercial}</Text>
                             <View style={{ display:'flex', flexDirection: 'row', marginTop: 8, justifyContent:'start', gap: 12, width: '100%', maxWidth:'100%'}}>
                                 <View style={{display:'flex', flexDirection: 'column', justifyContent:'start'}}>
                                     <Text style={{fontSize: 8}}>Dirección</Text>
                                     <Text style={{fontSize: 8}}>Matriz:</Text>
                                 </View>
                                 <View style={{width: 180, paddingRight:4}}>
-                                    <Text style={{fontSize: 8, maxWidth:180, paddingRight:4, textWrap:'wrap'}}>{factura.infoTributaria?.dirMatriz?._text}</Text>
+                                    <Text style={{fontSize: 8, maxWidth:180, paddingRight:4, textWrap:'wrap'}}>{factura.infoTributaria?.dirMatriz}</Text>
                                 </View>
                             </View>
                             <View style={{ display:'flex', flexDirection: 'row', marginTop: 6, justifyContent:'start', gap: 12, width: '100%', maxWidth:'100%'}}>
@@ -242,7 +242,7 @@ function FacturaPDF({factura}) {
                                     <Text style={{fontSize: 8}}>Sucursal:</Text>
                                 </View>
                                 <View style={{width: 180, paddingRight:4}}>
-                                    <Text style={{fontSize: 8, maxWidth:180, paddingRight:4, textWrap:'wrap'}}>{factura.infoFactura?.dirEstablecimiento?._text}</Text>
+                                    <Text style={{fontSize: 8, maxWidth:180, paddingRight:4, textWrap:'wrap'}}>{factura.infoFactura?.dirEstablecimiento}</Text>
                                 </View>
                             </View>
                             <View style={{marginTop: 6}}>
@@ -253,10 +253,10 @@ function FacturaPDF({factura}) {
                             </View>
                             <View style={{display:'flex', flexDirection: 'row', marginTop: 6, justifyContent:'start', gap: 12, width: '100%'}}>
                                 <Text style={{fontSize: 8}}>OBLIGADO A LLEVAR CONTABILIDAD:</Text>
-                                <Text style={{fontSize: 8}}>{factura.infoFactura?.obligadoContabilidad?._text}</Text>
+                                <Text style={{fontSize: 8}}>{factura.infoFactura?.obligadoContabilidad}</Text>
                             </View>
                             <View style={{marginTop: 6}}>
-                                <Text style={{fontSize: 8}}>{factura.infoTributaria?.contribuyenteRimpe?._text}</Text>
+                                <Text style={{fontSize: 8}}>{factura.infoTributaria?.contribuyenteRimpe}</Text>
                             </View>
                         </View>
                     </View>
@@ -264,25 +264,25 @@ function FacturaPDF({factura}) {
                     <View style={styles.textTopRight}>
                         <View style={{display:'flex', flexDirection:'row', gap:8}}>
                             <Text style={{fontSize: 8}}>R.U.C:</Text>
-                            <Text style={{fontSize: 8}}>{factura.infoTributaria?.ruc?._text}</Text>
+                            <Text style={{fontSize: 8}}>{factura.infoTributaria?.ruc}</Text>
                         </View>
                         <View style={{marginTop: 14, display:'flex', flexDirection:'column', gap:6}}>
                             <Text style={{fontSize: 8}}>
-                                {factura.infoTributaria?.codDoc?._text === '01' && 'FACTURA'}
-                                {factura.infoTributaria?.codDoc?._text === '04' && 'NOTA DE CRÉDITO'}
-                                {factura.infoTributaria?.codDoc?._text === '05' && 'NOTA DE DÉBITO'}
-                                {factura.infoTributaria?.codDoc?._text === '06' && 'GUÍA DE REMISIÓN'}
+                                {factura.infoTributaria?.codDoc === '01' && 'FACTURA'}
+                                {factura.infoTributaria?.codDoc === '04' && 'NOTA DE CRÉDITO'}
+                                {factura.infoTributaria?.codDoc === '05' && 'NOTA DE DÉBITO'}
+                                {factura.infoTributaria?.codDoc === '06' && 'GUÍA DE REMISIÓN'}
                             </Text>
                             <View style={{display:'flex', flexDirection:'row', gap:20}}>
                                 <Text style={{fontSize: 8}}>No.</Text>
                                 <Text style={{fontSize: 8}}>
-                                    {factura.infoTributaria?.estab?._text}-{factura.infoTributaria?.ptoEmi?._text}-{factura.infoTributaria?.secuencial?._text}
+                                    {factura.infoTributaria?.estab}-{factura.infoTributaria?.ptoEmi}-{factura.infoTributaria?.secuencial}
                                 </Text>
                             </View>
                         </View>
                         <View style={{marginTop: 14, display:'flex', flexDirection:'column', gap:6}}>
                             <Text style={{fontSize: 8}}>NUMERO DE AUTORIZACIÓN</Text>
-                            <Text style={{fontSize: 8}}>{factura.infoTributaria?.claveAcceso?._text}</Text>
+                            <Text style={{fontSize: 8}}>{factura.infoTributaria?.claveAcceso}</Text>
                         </View>
                         <View style={{marginTop: 14, display:'flex', flexDirection:'row', justifyContent:'start', alignItems:'center',gap:6}}>
                             <View style={{width:80}}>
@@ -293,45 +293,45 @@ function FacturaPDF({factura}) {
                         <View style={{marginTop: 14, display:'flex', flexDirection:'row', gap:8}}>
                             <Text style={{fontSize: 8}}>AMBIENTE.:</Text>
                             <Text style={{fontSize: 8}}>
-                                {factura.infoTributaria?.ambiente?._text === '1' && 'PRUEBAS'}
-                                {factura.infoTributaria?.ambiente?._text === '2' && 'PRODUCCIÓN'}
+                                {factura.infoTributaria?.ambiente === '1' && 'PRUEBAS'}
+                                {factura.infoTributaria?.ambiente === '2' && 'PRODUCCIÓN'}
                             </Text>
                         </View>
                         <View style={{marginTop: 14, display:'flex', flexDirection:'row', gap:17}}>
                             <Text style={{fontSize: 8}}>EMISIÓN:</Text>
                             <Text style={{fontSize: 8}}>
-                                {factura.infoTributaria?.tipoEmision?._text === '1' && 'NORMAL'}
+                                {factura.infoTributaria?.tipoEmision === '1' && 'NORMAL'}
                             </Text>
                         </View>
                         <View style={{marginTop: 14, display:'flex', flexDirection:'column', gap:6}}>
                             <Text style={{fontSize: 8}}>CLAVE DE ACCESO</Text>
-                            <Text style={{fontSize: 8}}>{factura.infoTributaria?.claveAcceso?._text}</Text>
+                            <Text style={{fontSize: 8}}>{factura.infoTributaria?.claveAcceso}</Text>
                         </View>
                     </View>
                 </View>
                 <View style={styles.middleSection}>
                     <View style={{ display:'flex', flexDirection:'row', width:'100%'}}>
                         <Text style={{fontSize: 8, width:75}}>RAZÓN SOCIAL:</Text>
-                        <Text style={{fontSize: 8, textTransform:'uppercase', width:420}}>{factura.infoFactura?.razonSocialComprador?._text}</Text>
+                        <Text style={{fontSize: 8, textTransform:'uppercase', width:420}}>{factura.infoFactura?.razonSocialComprador}</Text>
                     </View>
                     <View style={{display:'flex', flexDirection:'row', width:'100%'}}>
                         <Text style={{fontSize: 8, width:75}}>DIRECCIÓN DEL COMPRADOR:</Text>
-                        <Text style={{fontSize: 8, textTransform:'uppercase', width:420}}>{factura.infoFactura?.direccionComprador?._text}</Text>
+                        <Text style={{fontSize: 8, textTransform:'uppercase', width:420}}>{factura.infoFactura?.direccionComprador}</Text>
                     </View>
                     <View style={{display:'flex', flexDirection:'row', justifyContent:'start', width:'100%', gap:32}}>
                         <View style={{display:'flex', flexDirection:'row', gap: 4}}>
                             <Text style={{fontSize: 8}}>IDENTIFICACIÓN:</Text>
-                            <Text style={{fontSize: 8}}>{factura.infoFactura?.identificacionComprador?._text}</Text>
+                            <Text style={{fontSize: 8}}>{factura.infoFactura?.identificacionComprador}</Text>
                         </View>
 
                         <View style={{display:'flex', flexDirection:'row', gap: 4}}>
                             <Text style={{fontSize: 8}}>FECHA DE EMISIÓN:</Text>
-                            <Text style={{fontSize: 8}}>{factura.infoFactura?.fechaEmision?._text}</Text>
+                            <Text style={{fontSize: 8}}>{factura.infoFactura?.fechaEmision}</Text>
                         </View>
 
                         <View style={{display:'flex', flexDirection:'row', gap: 4}}>
                             <Text style={{fontSize: 8}}>GUÍA DE REMISIÓN:</Text>
-                            <Text style={{fontSize: 8}}>{factura.infoFactura?.guiaRemision?._text}</Text>
+                            <Text style={{fontSize: 8}}>{factura.infoFactura?.guiaRemision}</Text>
                         </View>
                     </View>
                 </View>
@@ -428,7 +428,7 @@ function FacturaPDF({factura}) {
                                         :
                                         <View style={{display:'flex', flexDirection:'row', width:270, gap:8, paddingTop:1, paddingBottom:1, paddingLeft:2, paddingRight:2}}>
                                             <Text style={{fontSize:8}}>{factura.infoAdicional?.campoAdicional?._attributes.nombre}:</Text>
-                                            <Text style={{fontSize:8}}>{factura.infoAdicional?.campoAdicional?._text}</Text>
+                                            <Text style={{fontSize:8}}>{factura.infoAdicional?.campoAdicional}</Text>
                                         </View>
                                     }
                                 </View>
@@ -456,16 +456,16 @@ function FacturaPDF({factura}) {
                                 formasDePago.map( (forma, index) => (
                                     <View style={ index+1 === formasDePago.length ? styles.lastFilaFormaPago : styles.filaFormaPago} key={forma.title}>
                                         <View style={{width:'55%', padding:4, borderLeft:'1px solid #000000'}}>
-                                            <Text style={{fontSize:8, width:'70%'}}>{forma.title}</Text>
+                                            <Text style={{fontSize:8, width:'70%'}}>{factura.infoFactura?.pagos?.pago?.formaPago}</Text>
                                         </View>
                                         <View style={{width:'15%', padding:4, borderLeft:'1px solid #000000'}}>
-                                            <Text style={{fontSize:8}}>{forma.value}</Text>
+                                            <Text style={{fontSize:8}}>{factura.infoFactura?.pagos?.pago?.formaPago}</Text>
                                         </View>
                                         <View style={{width:'15%', padding:4, borderLeft:'1px solid #000000'}}>
-                                            <Text style={{fontSize:8}}>{forma.plazo}</Text>
+                                            <Text style={{fontSize:8}}>{factura.infoFactura?.pagos?.pago?.formaPago}</Text>
                                         </View>
                                         <View style={{width:'15%', padding:4, borderLeft:'1px solid #000000', borderRight:'1px solid #000000'}}>
-                                            <Text style={{fontSize:8}}>{forma.tiempo}</Text>
+                                            <Text style={{fontSize:8}}>{factura.infoFactura?.pagos?.pago?.formaPago}</Text>
                                         </View>
                                     </View>
                                 ))

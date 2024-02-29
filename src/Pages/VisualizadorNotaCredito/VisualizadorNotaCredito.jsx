@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import xmlJs from 'xml-js';
 import { PDFViewer } from '@react-pdf/renderer';
-import FacturaPDF from '../../Components/FacturaPDF/FacturaPDF';
-import './visualizadorFactura.css'
+import NotaCreditoPDF from '../../Components/NotaCreditoPDF/NotaCreditoPDF';
+import './visualizadorNotaCredito.css'
 
-function VisualizadorFactura() {
+function VisualizadorNotaCredito() {
 
-    const [factura, setFactura] = useState()
+    const [notaCredito, setNotaCredito] = useState()
 
     // Objeto:
     // bef89efd-0374-413a-b107-6ed656004b1b
@@ -22,10 +22,9 @@ function VisualizadorFactura() {
 
 
     const getData = async () => {
-        const response = await fetch('https://calero-app-back-b4f35bcf8e81.herokuapp.com/api/v1.0/recibidos/facturas/ABCD/AB01/fc6749f2-08e0-458a-81e1-938224caadbb');
+        const response = await fetch('https://calero-app-back-b4f35bcf8e81.herokuapp.com/api/v1.0/recibidos/nota-credito/ABCD/AB01/c59b6f59-c124-43fa-8306-80807b00e72a');
         const data = await response.json();
-        setFactura(data.comprobante);
-   
+        setNotaCredito(data.comprobante);
     }
 
     useEffect(() => {
@@ -33,11 +32,11 @@ function VisualizadorFactura() {
     }, [])
 
     return (
-        factura &&
+        notaCredito &&
         <PDFViewer className={'visualizadorPDF'}>
-            <FacturaPDF factura={factura} />
+            <NotaCreditoPDF notaCredito={notaCredito} />
         </PDFViewer>
     )
 }
 
-export default VisualizadorFactura
+export default VisualizadorNotaCredito
