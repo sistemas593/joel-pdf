@@ -22,10 +22,10 @@ function VisualizadorFactura() {
 
 
     const getData = async () => {
-        const response = await fetch('https://calero-app-back-b4f35bcf8e81.herokuapp.com/api/v1.0/recibidos/facturas/ABCD/AB01/fc6749f2-08e0-458a-81e1-938224caadbb');
+        const response = await fetch('https://calero-app-back-b4f35bcf8e81.herokuapp.com/api/v1.0/recibidos/facturas/ABCD/AB01/f5a59d46-a05e-484f-8834-316d85beed79');
         const data = await response.json();
         setFactura(data.comprobante);
-   
+
     }
 
     useEffect(() => {
