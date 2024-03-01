@@ -4,7 +4,6 @@ import logoFactura from '../../assets/logoFactura.png'
 
 function FacturaPDF({ factura }) {
 
-    console.log(factura);
     const [subtotal, setSubtotal] = useState(parseFloat(0).toFixed(2))
     const [descuento, setDescuento] = useState(parseFloat(0).toFixed(2))
     const [baseCero, setBaseCero] = useState(parseFloat(0).toFixed(2))
@@ -73,15 +72,6 @@ function FacturaPDF({ factura }) {
             setTotal(0);
         }
     }, [factura])
-
-    //console.log(factura);
-    console.log(factura.infoFactura.totalImpuesto);
-
-    factura.infoFactura.totalImpuesto.map((total) => (
-        console.log(total.codigo)
-    ))
-
-
 
     const styles = StyleSheet.create({
         page: {
@@ -196,50 +186,6 @@ function FacturaPDF({ factura }) {
             borderBottom: '1px solid #000000'
         }
     });
-
-    const totales = [
-        {
-            title: 'SUBTOTAL 12%',
-            value: 0,
-            optional: false
-        },
-        {
-            title: 'SUBTOTAL 0%',
-            value: 10,
-            optional: false
-        },
-        {
-            title: 'SUBTOTAL no objeto de IVA',
-            value: 0,
-            optional: true
-        },
-        {
-            title: 'SUBTOTAL exento de IVA',
-            value: 0,
-            optional: true
-        },
-        {
-            title: 'SUBTOTAL SIN IMPUESTOS',
-            value: 10,
-            optional: false
-        },
-        {
-            title: 'TOTAL descuento',
-            value: 10,
-            optional: false
-        },
-        {
-            title: 'IVA 12%',
-            value: 10,
-            optional: false
-        },
-        {
-            title: 'VALOR TOTAL',
-            value: 10,
-            optional: false
-        },
-    ]
-
 
     return (
         <Document>
