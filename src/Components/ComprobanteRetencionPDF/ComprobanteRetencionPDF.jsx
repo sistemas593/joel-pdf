@@ -352,89 +352,61 @@ function ComprobanteRetencionPDF({ comprobanteRetencion }) {
                     {/* Productos */}
 
                     <View style={{ display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch', borderTop: '1px solid #000000', borderBottom: '1px solid #000000' }}>
-                    <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 150, borderLeft: '1px solid #000000' }}>
+                        <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 150, borderLeft: '1px solid #000000' }}>
                             <Text style={{ fontSize: 8 }}>FACTURA</Text>
+                        </View>
+                        <View style={{ padding: 4, display: 'flex', justifyContent: 'start', alignItems: 'start', textAlign: 'start', flexGrow: 1, width: 165, borderLeft: '1px solid #000000' }}>
+                            <Text style={{ fontSize: 8 }}>001002000001932</Text>
+                        </View>
+                        <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 150, borderLeft: '1px solid #000000' }}>
+                            <Text style={{ fontSize: 8 }}>01/08/2023</Text>
+                        </View>
+                        <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 100, borderLeft: '1px solid #000000' }}>
+                            <Text style={{ fontSize: 8 }}>08/2023</Text>
+                        </View>
+                        <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 170, borderLeft: '1px solid #000000' }}>
+                            <Text style={{ fontSize: 8 }}>30.60</Text>
+                        </View>
+                        <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 150, borderLeft: '1px solid #000000' }}>
+                            <Text style={{ fontSize: 8 }}>IVA</Text>
+                        </View>
+                        <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 120, borderLeft: '1px solid #000000' }}>
+                            <Text style={{ fontSize: 8 }}>100.0</Text>
+                        </View>
+                        <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 150, borderLeft: '1px solid #000000', borderRight: '1px solid #000000' }}>
+                            <Text style={{ fontSize: 8 }}>30.60</Text>
+                        </View>
                     </View>
-                    <View style={{ padding: 4, display: 'flex', justifyContent: 'start', alignItems: 'start', textAlign: 'start', flexGrow: 1, width: 165, borderLeft: '1px solid #000000' }}>
-                            <Text style={{ fontSize: 8}}>001002000001932</Text>
-                    </View>
-                    <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 150, borderLeft: '1px solid #000000' }}>
-                        <Text style={{ fontSize: 8 }}>01/08/2023</Text>
-                    </View>
-                    <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 100, borderLeft: '1px solid #000000' }}>
-                        <Text style={{ fontSize: 8 }}>08/2023</Text>
-                    </View>
-                    <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 170, borderLeft: '1px solid #000000' }}>
-                        <Text style={{ fontSize: 8 }}>30.60</Text>
-                    </View>
-                    <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 150, borderLeft: '1px solid #000000' }}>
-                        <Text style={{ fontSize: 8 }}>IVA</Text>
-                    </View>
-                    <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 120, borderLeft: '1px solid #000000' }}>
-                        <Text style={{ fontSize: 8 }}>100.0</Text>
-                    </View>
-                    <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 150, borderLeft: '1px solid #000000', borderRight: '1px solid #000000' }}>
-                        <Text style={{ fontSize: 8 }}>30.60</Text>
-                    </View>
+
                 </View>
+                {/* Footer */}
+                <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'start', alignItems: 'start', width: '100%' }}>
+                    <View style={{ flexGrow: 1, paddingTop: 4, paddingRight: 4, display: 'flex', flexDirection: 'column' }}>
 
-            </View>
-            {/* Footer */}
-            <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'start', alignItems: 'start', width: '100%' }}>
-                <View style={{ flexGrow: 1, paddingTop: 4, paddingRight: 4, display: 'flex', flexDirection: 'column' }}>
-                    <View style={{ width: '100%', border: '1px solid #000000', marginBottom: 10 }}>
-                        <View style={{ width: '100%', padding: 4 }}>
-                            <Text style={{ fontSize: 8, marginLeft: 8 }}>INFORMACIÓN ADICIONAL</Text>
-                        </View>
-
-                        <View style={{ borderTop: '1px solid #000000' }}>
-                            <View style={{ display: 'flex', flexDirection: 'row', width: 270, gap: 8, paddingTop: 1, paddingBottom: 1, paddingLeft: 2, paddingRight: 2 }}>
-                                <Text style={{ fontSize: 8 }}>NOMBRE</Text>
-                                <Text style={{ fontSize: 8 }}>VALOR</Text>
+                        {/* INFORMACION ADICIONAL */}
+                        <View style={{ width: '70%', border: '1px solid #000000' }}>
+                            <View style={{ width: '100%', padding: 4 }}>
+                                <Text style={{ fontSize: 8, marginLeft: 8, alignItems: 'center', textAlign: 'center' }}>INFORMACIÓN ADICIONAL</Text>
                             </View>
-                        </View>
-
-                    </View>
-
-
-                    <View style={{ width: '100%', display: 'flex', flexDirection: 'column', marginTop: 4 }}>
-                        <View style={{ width: '100%', display: 'flex', flexDirection: 'row', borderTop: '1px solid #000000' }}>
-                            <View style={{ width: '55%', padding: 4, borderLeft: '1px solid #000000' }}>
-                                <Text style={{ fontSize: 8 }}>Forma de Pago</Text>
-                            </View>
-                            <View style={{ width: '15%', padding: 4, borderLeft: '1px solid #000000' }}>
-                                <Text style={{ fontSize: 8 }}>Valor</Text>
-                            </View>
-                            <View style={{ width: '15%', padding: 4, borderLeft: '1px solid #000000' }}>
-                                <Text style={{ fontSize: 8 }}>Plazo</Text>
-                            </View>
-                            <View style={{ width: '15%', padding: 4, borderLeft: '1px solid #000000', borderRight: '1px solid #000000' }}>
-                                <Text style={{ fontSize: 8 }}>Tiempo</Text>
-                            </View>
-                        </View>
-                        {
-                            formasDePago.map((forma, index) => (
-                                <View style={index + 1 === formasDePago.length ? styles.lastFilaFormaPago : styles.filaFormaPago} key={forma.title}>
-                                    <View style={{ width: '55%', padding: 4, borderLeft: '1px solid #000000' }}>
-                                        <Text style={{ fontSize: 8, width: '70%' }}>{comprobanteRetencion.infoComprobanteRetencion?.pagos?.pago?.formaPago}</Text>
-                                    </View>
-                                    <View style={{ width: '15%', padding: 4, borderLeft: '1px solid #000000' }}>
-                                        <Text style={{ fontSize: 8 }}>{comprobanteRetencion.infoComprobanteRetencion?.pagos?.pago?.formaPago}</Text>
-                                    </View>
-                                    <View style={{ width: '15%', padding: 4, borderLeft: '1px solid #000000' }}>
-                                        <Text style={{ fontSize: 8 }}>{comprobanteRetencion.infoComprobanteRetencion?.pagos?.pago?.formaPago}</Text>
-                                    </View>
-                                    <View style={{ width: '15%', padding: 4, borderLeft: '1px solid #000000', borderRight: '1px solid #000000' }}>
-                                        <Text style={{ fontSize: 8 }}>{comprobanteRetencion.infoComprobanteRetencion?.pagos?.pago?.formaPago}</Text>
-                                    </View>
+                            {
+                                comprobanteRetencion.campoAdicional &&
+                                <View style={{ borderTop: '1px solid #000000', paddingVertical: 10, paddingHorizontal: 5  }}>
+                                    {
+                                        comprobanteRetencion.campoAdicional?.map(dato => (
+                                            <View style={{ display: 'flex', flexDirection: 'row', width: 270, gap: 8, paddingTop: 1, paddingBottom: 1, paddingLeft: 2, paddingRight: 2 }} key={dato.nombre}>
+                                                <Text style={{ fontSize: 8 }}>{dato.nombre}:</Text>
+                                                <Text style={{ fontSize: 8 }}>{dato.valor}</Text>
+                                            </View>
+                                        ))
+                                    }
                                 </View>
-                            ))
-                        }
+                            }
+                        </View>
+
+
                     </View>
                 </View>
-
-            </View>
-        </Page>
+            </Page>
         </Document >
     )
 }

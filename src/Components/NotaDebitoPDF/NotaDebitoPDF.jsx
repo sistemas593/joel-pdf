@@ -1,8 +1,77 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 import logoFactura from '../../assets/logoFactura.png'
 
 function NotaDebitoPDF({ notaDebito }) {
+
+    const [subtotal, setSubtotal] = useState(parseFloat(0).toFixed(2))
+    const [descuento, setDescuento] = useState(parseFloat(0).toFixed(2))
+    const [baseCero, setBaseCero] = useState(parseFloat(0).toFixed(2))
+    const [baseGravada, setBaseGravada] = useState(parseFloat(0).toFixed(2))
+    const [baseNoObjeto, setBaseNoObjeto] = useState(parseFloat(0).toFixed(2))
+    const [baseExenta, setBaseExenta] = useState(parseFloat(0).toFixed(2))
+    const [iva, setIva] = useState(parseFloat(0).toFixed(2))
+    const [baseDiferenciada, setBaseDiferenciada] = useState(parseFloat(0).toFixed(2))
+    const [total, setTotal] = useState(parseFloat(0).toFixed(2))
+
+    useEffect(() => {
+
+        if (notaDebito.infoNotaDebito.totalSinImpuestos) {
+            setSubtotal(notaDebito.infoNotaDebito.totalSinImpuestos)
+        } else {
+            setSubtotal(0)
+        }
+        if (notaDebito.infoNotaDebito.totalDescuento) {
+            setDescuento(notaDebito.infoNotaDebito.totalDescuento)
+        } else {
+            setDescuento(0)
+        }
+
+        // const baseCeroElemento = notaDebito.infoNotaDebito.totalImpuesto.find(impuesto => impuesto.codigo === '0')
+        // if (baseCeroElemento && baseCeroElemento.baseImponible > 0) {
+        //     setBaseCero(parseFloat(baseCeroElemento.baseImponible).toFixed(2));
+        // } else {
+        //     setBaseCero(parseFloat(0).toFixed(2));
+        // }
+
+        // const baseGravadaElemento = notaDebito.infoNotaDebito.totalImpuesto.find(impuesto => impuesto.codigo === '2')
+        // if (baseGravadaElemento && baseGravadaElemento.baseImponible > 0) {
+        //     setBaseGravada(parseFloat(baseGravadaElemento.baseImponible).toFixed(2));
+        // } else {
+        //     setBaseGravada(parseFloat(0).toFixed(2));
+        // }
+        // if (baseGravadaElemento && baseGravadaElemento.valor > 0) {
+        //     setIva(parseFloat(baseGravadaElemento.valor).toFixed(2));
+        // } else {
+        //     setIva(parseFloat(0).toFixed(2));
+        // }
+
+        // const baseNoObjetoElemento = notaDebito.infoNotaDebito.totalImpuesto.find(impuesto => impuesto.codigo === '6')
+        // if (baseNoObjetoElemento && baseNoObjetoElemento.baseImponible > 0) {
+        //     setBaseNoObjeto(parseFloat(baseNoObjetoElemento.baseImponible).toFixed(2));
+        // } else {
+        //     setBaseNoObjeto();
+        // }
+
+        // const baseExentaElemento = notaDebito.infoNotaDebito.totalImpuesto.find(impuesto => impuesto.codigo === '7')
+        // if (baseExentaElemento && baseExentaElemento.baseImponible > 0) {
+        //     setBaseExenta(parseFloat(baseExentaElemento.baseImponible).toFixed(2));
+        // } else {
+        //     setBaseExenta();
+        // }
+
+        // const baseDiferenciadaElemento = notaDebito.infoNotaDebito.totalImpuesto.find(impuesto => impuesto.codigo === '8')
+        // if (baseDiferenciadaElemento && baseDiferenciadaElemento.baseImponible > 0) {
+        //     setBaseDiferenciada(parseFloat(baseDiferenciadaElemento.baseImponible).toFixed(2));
+        // } else {
+        //     setBaseDiferenciada();
+        // }
+        // if (notaDebito.infoNotaDebito.importeTotal) {
+        //     setTotal(notaDebito.infoNotaDebito.importeTotal)
+        // } else {
+        //     setTotal(0);
+        // }
+    }, [notaDebito])
 
     const styles = StyleSheet.create({
         page: {
@@ -65,15 +134,19 @@ function NotaDebitoPDF({ notaDebito }) {
             justifyContent: 'start',
             backgroundColor: '#FFFFFF',
         },
-        motivoTable: {
+        productoTable: {
+            marginTop: -2,
+            marginBottom: 0.1,
             display: 'flex',
             width: '100%',
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'stretch',
-            borderTop: '1px solid #000000'
+            borderTop: '1px solid #000000',
+            borderBottom: '1px solid #000000'
+
         },
-        lastMotivoTable: {
+        lastProductoTable: {
             display: 'flex',
             width: '100%',
             flexDirection: 'row',
@@ -82,7 +155,7 @@ function NotaDebitoPDF({ notaDebito }) {
             borderTop: '1px solid #000000',
             borderBottom: '1px solid #000000'
         },
-        lasttMotivoTable: {
+        lasttProductoTable: {
             display: 'flex',
             width: '100%',
             flexDirection: 'row',
@@ -234,7 +307,7 @@ function NotaDebitoPDF({ notaDebito }) {
                         <View style={styles.textTopLeft}>
                             <Text style={{ fontSize: 10, textAlign: 'center', textTransform: 'uppercase' }}>{notaDebito.infoTributaria?.razonSocial}</Text>
                             <Text style={{ fontSize: 8, textAlign: 'center', textTransform: 'uppercase', color: '#00000060', marginTop: 2 }}>{notaDebito.infoTributaria?.nombreComercial}</Text>
-                            <View style={{ display: 'flex', flexDirection: 'row', marginRight: 10,marginTop: 8, justifyContent: 'start', gap: 12, width: '100%', maxWidth: '100%' }}>
+                            <View style={{ display: 'flex', flexDirection: 'row', marginRight: 10, marginTop: 8, justifyContent: 'start', gap: 12, width: '100%', maxWidth: '100%' }}>
                                 <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'start' }}>
                                     <Text style={{ fontSize: 8 }}>Dirección</Text>
                                     <Text style={{ fontSize: 8 }}>Matriz:</Text>
@@ -252,8 +325,8 @@ function NotaDebitoPDF({ notaDebito }) {
                                     <Text style={{ fontSize: 8, maxWidth: 180, paddingRight: 4, textWrap: 'wrap' }}>{notaDebito.infoNotaDebito?.dirEstablecimiento}</Text>
                                 </View>
                             </View>
-                            <View style={{marginTop: 6}}>
-                                <Text style={{fontSize: 8}}>Contribuyente especial Nro. 490509</Text>
+                            <View style={{ marginTop: 6 }}>
+                                <Text style={{ fontSize: 8 }}>Contribuyente especial Nro. 490509</Text>
                             </View>
                             <View style={{ display: 'flex', flexDirection: 'row', marginTop: 6, justifyContent: 'start', gap: 12, width: '100%' }}>
                                 <Text style={{ fontSize: 8 }}>OBLIGADO A LLEVAR CONTABILIDAD:</Text>
@@ -348,89 +421,147 @@ function NotaDebitoPDF({ notaDebito }) {
                         <Text style={{ fontSize: 8, textTransform: 'uppercase', width: 420 }}>{notaDebito.infoNotaDebito?.fechaEmisionDocSustento}</Text>
                     </View>
                 </View>
+
                 {/* Tabla */}
-                <View style={{ width: '100%', display: 'flex', flexDirection: 'column', marginTop: 4 }}>
-                    <View style={{ width: '100%', display: 'flex', flexDirection: 'row', borderTop: '1px solid #000000' }}>
-                        <View style={{ paddingVertical: 10, textAlign: 'center', padding:10, width: '68%', borderLeft: '1px solid #000000' }}>
-                            <Text style={{ fontSize: 8 ,}}>RAZÓN DE MODIFICACIÓN</Text>
+                <View style={styles.tableBody}>
+                    {/* Header tabla */}
+                    <View style={{ display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch', borderTop: '1px solid #000000' }}>
+                        <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: '70.1%', borderLeft: '1px solid #000000' }}>
+                            <Text style={{ fontSize: 8 }}>Código</Text>
                         </View>
-                        <View style={{ paddingVertical: 10, textAlign: 'center', padding:10, width: '32%', borderLeft: '1px solid #000000', borderRight: '1px solid #000000' }}>
-                            <Text style={{ fontSize: 8 }}>VALOR DE LA MODIFICACIÓN</Text>
+                        <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: '35%', borderLeft: '1px solid #000000', borderRight: '1px solid #000000' }}>
+                            <Text style={{ fontSize: 8 }}>Precio Total</Text>
                         </View>
-
                     </View>
-
-
-
-                    <View style={{ width: '100%', display: 'flex', flexDirection: 'row', borderBottom: '1px solid #000000', borderTop: '1px solid #000000' }}>
-                        <View style={{ width: '68%', padding: 4, borderLeft: '1px solid #000000' }}>
-                            <Text style={{ fontSize: 8 }}>{notaDebito.motivo?.razon}</Text>
-                        </View>
-                        <View style={{ width: '32%', padding: 4, textAlign:'right', borderLeft: '1px solid #000000', borderRight: '1px solid #000000' }}>
-                            <Text style={{ fontSize: 8 }}>{notaDebito.motivo?.valor}</Text>
-                        </View>
-
-                    </View>
-                             
-
+                    {/* Detalle */}
+                    {
+                        notaDebito.motivo?.map((modificacion, index) => (
+                            <View style={index + 1 === notaDebito.motivo?.width ? styles.lastProductoTable : styles.productoTable} key={modificacion}>
+                                <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'left', textAlign: 'left', width: '70.1%', borderLeft: '1px solid #000000' }}>
+                                    <Text style={{ fontSize: 8 }}>{modificacion.razon}</Text>
+                                </View>
+                                <View style={{ padding: 4, display: 'flex', justifyContent: 'center', alignItems: 'right', textAlign: 'right', width: '35%', borderLeft: '1px solid #000000', borderRight: '1px solid #000000' }}>
+                                    <Text style={{ fontSize: 8 }}>{parseFloat(modificacion.valor).toFixed(2)}</Text>
+                                </View>
+                            </View>
+                        ))
+                    }
                 </View>
+
                 {/* Footer */}
                 <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'start', alignItems: 'start', width: '100%' }}>
                     <View style={{ flexGrow: 1, paddingTop: 4, paddingRight: 4, display: 'flex', flexDirection: 'column' }}>
-                        <View style={styles.lasttMotivoTable}>
-                            <View style={{ width: '75%', padding: 10, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 85 }}>
-                            </View>
-                            <View style={{ width: '25%', padding: 7, display: 'flex', justifyContent: 'center', alignItems: 'start', textAlign: 'start', width: '90%' }}>
-                            </View>
-                        </View>
 
-                        <View style={{ width: '100%', display: 'flex', flexDirection: 'column', marginTop: 4 }}>
+                        {/* FORMAS DE PAGO */}
+                        <View style={{ width: '80%', display: 'flex', flexDirection: 'column', marginTop: 30, marginRight: 100 }}>
                             <View style={{ width: '100%', display: 'flex', flexDirection: 'row', borderTop: '1px solid #000000' }}>
-                                <View style={{ width: '75%', padding: 4, borderLeft: '1px solid #000000' }}>
+                                <View style={{ width: '65%', padding: 4, borderLeft: '1px solid #000000', alignItems: 'center' }}>
                                     <Text style={{ fontSize: 8 }}>Forma de Pago</Text>
                                 </View>
-                                <View style={{ width: '25%', padding: 4, borderLeft: '1px solid #000000', borderRight: '1px solid #000000' }}>
+                                <View style={{ width: '35%', padding: 4, borderLeft: '1px solid #000000', borderRight: '1px solid #000000', alignItems: 'center' }}>
                                     <Text style={{ fontSize: 8 }}>Valor</Text>
                                 </View>
-
                             </View>
-                            {
-                                formasDePago.map((forma, index) => (
-                                    <View style={index + 1 === formasDePago.length ? styles.lastFilaFormaPago : styles.filaFormaPago} key={forma.title}>
-                                        <View style={{ width: '75%', padding: 4, borderLeft: '1px solid #000000' }}>
-                                            <Text style={{ fontSize: 8, width: '70%' }}>{forma.title}</Text>
+                            {/* {
+                                notaDebito.infoNotaDebito.pago.map((forma, index) => (
+                                    <View style={index + 1 === notaDebito.infoNotaDebito.pago.length ? styles.lastFilaFormaPago : styles.filaFormaPago} key={forma.formaPago}>
+                                        <View style={{ width: '55%', padding: 4, borderLeft: '1px solid #000000' }}>
+                                            <Text style={{ fontSize: 8, width: '70%' }}>{forma.formaPago}</Text>
                                         </View>
-                                        <View style={{ width: '25%', padding: 4, borderLeft: '1px solid #000000', borderRight: '1px solid #000000' }}>
-                                            <Text style={{ fontSize: 8 }}>{forma.value}</Text>
-                                        </View>
+                                        <View style={{ width: '15%', padding: 4, borderLeft: '1px solid #000000' }}>
+                                            <Text style={{ fontSize: 8 }}>{forma.total}</Text>
+                                        </View>                                        
                                     </View>
                                 ))
-                            }
+                            } */}
                         </View>
                     </View>
+
+                    {/* VALORES TOTALES */}
                     <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'end', alignItems: 'stretch', width: 'auto' }}>
-                        {
-                            totales.map((total, index) => (
-                                total.value === 0 && total.optional ?
-                                    <React.Fragment key={total.title}></React.Fragment>
-                                    :
-                                    <View style={index === 0 ? styles.firstFilaFooter : index + 1 === totales.length ? styles.lastFilaFooter : styles.filaFooter} key={total.title}>
-                                        <View style={{ padding: 2, display: 'flex', justifyContent: 'center', alignItems: 'start', textAlign: 'start', width: 142.7, borderLeft: '1px solid #000000' }}>
-                                            <Text style={{ fontSize: 5 }}>{total.title}</Text>
-                                        </View>
-                                        <View style={{ padding: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', width: 107, borderLeft: '1px solid #000000', borderRight: '1px solid #000000' }}>
-                                            <Text style={{ fontSize: 8 }}>{total.value}</Text>
-                                        </View>
-                                    </View>
-                            ))
+                        <View style={styles.firstFilaFooter} key={total.title}>
+                            <View style={{ padding: 2, display: 'flex', justifyContent: 'center', alignItems: 'start', textAlign: 'start', width: 142.7, borderLeft: '1px solid #000000' }}>
+                                <Text style={{ fontSize: 5 }}>SubTotal</Text>
+                            </View>
+                            <View style={{ paddingRight: 39.2, display: 'flex', justifyContent: 'center', alignItems: 'right', textAlign: 'right', width: 107, borderLeft: '1px solid #000000', borderRight: '1px solid #000000' }}>
+                                <Text style={{ fontSize: 8 }}>{subtotal}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.filaFooter} key={total.title}>
+                            <View style={{ padding: 2, display: 'flex', justifyContent: 'center', alignItems: 'start', textAlign: 'start', width: 142.7, borderLeft: '1px solid #000000' }}>
+                                <Text style={{ fontSize: 5 }}>Descuento</Text>
+                            </View>
+                            <View style={{ paddingRight: 39.2, display: 'flex', justifyContent: 'center', alignItems: 'right', textAlign: 'right', width: 107, borderLeft: '1px solid #000000', borderRight: '1px solid #000000'}}>
+                                <Text style={{ fontSize: 8 }}>{descuento}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.filaFooter} key={total.title}>
+                            <View style={{ padding: 2, display: 'flex', justifyContent: 'center', alignItems: 'start', textAlign: 'start', width: 142.7, borderLeft: '1px solid #000000' }}>
+                                <Text style={{ fontSize: 5 }}>Base Gravada</Text>
+                            </View>
+                            <View style={{ paddingRight: 39.2, display: 'flex', justifyContent: 'center', alignItems: 'right', textAlign: 'right', width: 107, borderLeft: '1px solid #000000', borderRight: '1px solid #000000'}}>
+                                <Text style={{ fontSize: 8 }}>{baseGravada}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.filaFooter} key={total.title}>
+                            <View style={{ padding: 2, display: 'flex', justifyContent: 'center', alignItems: 'start', textAlign: 'start', width: 142.7, borderLeft: '1px solid #000000' }}>
+                                <Text style={{ fontSize: 5 }}>IVA</Text>
+                            </View>
+                            <View style={{ paddingRight: 39.2, display: 'flex', justifyContent: 'center', alignItems: 'right', textAlign: 'right', width: 107, borderLeft: '1px solid #000000', borderRight: '1px solid #000000'}}>
+                                <Text style={{ fontSize: 8 }}>{iva}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.filaFooter} key={total.title}>
+                            <View style={{ padding: 2, display: 'flex', justifyContent: 'center', alignItems: 'start', textAlign: 'start', width: 142.7, borderLeft: '1px solid #000000' }}>
+                                <Text style={{ fontSize: 5 }}>Base Cero</Text>
+                            </View>
+                            <View style={{ paddingRight: 39.2, display: 'flex', justifyContent: 'center', alignItems: 'right', textAlign: 'right', width: 107, borderLeft: '1px solid #000000', borderRight: '1px solid #000000'}}>
+                                <Text style={{ fontSize: 8 }}>{baseCero}</Text>
+                            </View>
+                        </View>
+                        {baseNoObjeto &&
+                            <View style={styles.filaFooter} key={total.title}>
+                                <View style={{ padding: 2, display: 'flex', justifyContent: 'center', alignItems: 'start', textAlign: 'start', width: 142.7, borderLeft: '1px solid #000000' }}>
+                                    <Text style={{ fontSize: 5 }}>Base No Objeto</Text>
+                                </View>
+                                <View style={{ paddingRight: 39.2, display: 'flex', justifyContent: 'center', alignItems: 'right', textAlign: 'right', width: 107, borderLeft: '1px solid #000000', borderRight: '1px solid #000000'}}>
+                                    <Text style={{ fontSize: 8 }}>{baseNoObjeto}</Text>
+                                </View>
+                            </View>
                         }
+                        {baseExenta &&
+                            <View style={styles.filaFooter} key={total.title}>
+                                <View style={{ padding: 2, display: 'flex', justifyContent: 'center', alignItems: 'start', textAlign: 'start', width: 142.7, borderLeft: '1px solid #000000' }}>
+                                    <Text style={{ fontSize: 5 }}>Base Exenta</Text>
+                                </View>
+                                <View style={{ paddingRight: 39.2, display: 'flex', justifyContent: 'center', alignItems: 'right', textAlign: 'right', width: 107, borderLeft: '1px solid #000000', borderRight: '1px solid #000000'}}>
+                                    <Text style={{ fontSize: 8 }}>{baseExenta}</Text>
+                                </View>
+                            </View>
+                        }
+                        {baseDiferenciada &&
+                            <View style={styles.filaFooter} key={total.title}>
+                                <View style={{ padding: 2, display: 'flex', justifyContent: 'center', alignItems: 'start', textAlign: 'start', width: 142.7, borderLeft: '1px solid #000000' }}>
+                                    <Text style={{ fontSize: 5 }}>Base Exenta</Text>
+                                </View>
+                                <View style={{ paddingRight: 39.2, display: 'flex', justifyContent: 'center', alignItems: 'right', textAlign: 'right', width: 107, borderLeft: '1px solid #000000', borderRight: '1px solid #000000'}}>
+                                    <Text style={{ fontSize: 8 }}>{baseDiferenciada}</Text>
+                                </View>
+                            </View>
+                        }
+
+                        <View style={styles.lastFilaFooter} key={total.title}>
+                            <View style={{ padding: 2, display: 'flex', justifyContent: 'center', alignItems: 'start', textAlign: 'start', width: 142.7, borderLeft: '1px solid #000000' }}>
+                                <Text style={{ fontSize: 5 }}>Total</Text>
+                            </View>
+                            <View style={{ paddingRight: 39.2, display: 'flex', justifyContent: 'center', alignItems: 'right', textAlign: 'right', width: 107, borderLeft: '1px solid #000000', borderRight: '1px solid #000000'}}>
+                                <Text style={{ fontSize: 8 }}>{total}</Text>
+                            </View>
+                        </View>
                     </View>
 
+
                 </View>
-
-
-
-
             </Page>
         </Document>
     )

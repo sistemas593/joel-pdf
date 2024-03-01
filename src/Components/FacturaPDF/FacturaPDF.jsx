@@ -385,7 +385,7 @@ function FacturaPDF({ factura }) {
                         </View>
 
                         {/* FORMAS DE PAGO */}
-                        <View style={{ width: '100%', display: 'flex', flexDirection: 'column', marginTop: 4 }}>
+                        <View style={{width: '100%', display: 'flex', flexDirection: 'column', marginTop: 4 }}>
                             <View style={{ width: '100%', display: 'flex', flexDirection: 'row', borderTop: '1px solid #000000' }}>
                                 <View style={{ width: '55%', padding: 4, borderLeft: '1px solid #000000' }}>
                                     <Text style={{ fontSize: 8 }}>Forma de Pago</Text>
